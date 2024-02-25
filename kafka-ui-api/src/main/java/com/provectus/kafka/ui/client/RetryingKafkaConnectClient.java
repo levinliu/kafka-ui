@@ -19,7 +19,7 @@ import com.provectus.kafka.ui.util.WebClientConfigurator;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+//import javax.annotation.Nullable;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.unit.DataSize;
@@ -36,7 +36,7 @@ public class RetryingKafkaConnectClient extends KafkaConnectClientApi {
   private static final Duration RETRIES_DELAY = Duration.ofMillis(200);
 
   public RetryingKafkaConnectClient(ConnectCluster config,
-                                    @Nullable ClustersProperties.TruststoreConfig truststoreConfig,
+                                    ClustersProperties.TruststoreConfig truststoreConfig,
                                     DataSize maxBuffSize) {
     super(new RetryingApiClient(config, truststoreConfig, maxBuffSize));
   }

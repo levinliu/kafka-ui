@@ -16,12 +16,12 @@ public class InternalTopicConsumerGroup {
 
   String groupId;
   int members;
-  @Nullable
+
   Long consumerLag; //null means no committed offsets found for this group
   boolean isSimple;
   String partitionAssignor;
   ConsumerGroupState state;
-  @Nullable
+
   Node coordinator;
 
   public static InternalTopicConsumerGroup create(
@@ -45,7 +45,7 @@ public class InternalTopicConsumerGroup {
         .build();
   }
 
-  @Nullable
+
   private static Long calculateConsumerLag(Map<TopicPartition, Long> committedOffsets,
                                            Map<TopicPartition, Long> endOffsets) {
     if (committedOffsets.isEmpty()) {

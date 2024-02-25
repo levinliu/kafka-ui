@@ -18,10 +18,10 @@ public class ClusterSerdes implements Closeable {
 
   final Map<String, SerdeInstance> serdes;
 
-  @Nullable
+
   final SerdeInstance defaultKeySerde;
 
-  @Nullable
+
   final SerdeInstance defaultValueSerde;
 
   @Getter

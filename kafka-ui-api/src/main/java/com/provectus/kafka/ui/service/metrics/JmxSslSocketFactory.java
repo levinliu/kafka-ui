@@ -81,15 +81,15 @@ class JmxSslSocketFactory extends javax.net.ssl.SSLSocketFactory {
   }
 
   private record Ssl(@Nullable String truststoreLocation,
-                     @Nullable String truststorePassword,
-                     @Nullable String keystoreLocation,
-                     @Nullable String keystorePassword) {
+                    String truststorePassword,
+                    String keystoreLocation,
+                    String keystorePassword) {
   }
 
   public static void setSslContextThreadLocal(@Nullable String truststoreLocation,
-                                              @Nullable String truststorePassword,
-                                              @Nullable String keystoreLocation,
-                                              @Nullable String keystorePassword) {
+                                             String truststorePassword,
+                                             String keystoreLocation,
+                                             String keystorePassword) {
     SSL_CONTEXT_THREAD_LOCAL.set(
         new Ssl(truststoreLocation, truststorePassword, keystoreLocation, keystorePassword));
   }

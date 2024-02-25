@@ -63,7 +63,7 @@ public class DeserializationService implements Closeable {
   private SerdeInstance getSerdeForDeserialize(KafkaCluster cluster,
                                                String topic,
                                                Serde.Target type,
-                                               @Nullable String serdeName) {
+                                              String serdeName) {
     var serdes = getSerdesFor(cluster);
     if (serdeName != null) {
       var serde = serdes.serdeForName(serdeName)
@@ -90,8 +90,8 @@ public class DeserializationService implements Closeable {
 
   public ConsumerRecordDeserializer deserializerFor(KafkaCluster cluster,
                                                     String topic,
-                                                    @Nullable String keySerdeName,
-                                                    @Nullable String valueSerdeName) {
+                                                   String keySerdeName,
+                                                   String valueSerdeName) {
     var keySerde = getSerdeForDeserialize(cluster, topic, Serde.Target.KEY, keySerdeName);
     var valueSerde = getSerdeForDeserialize(cluster, topic, Serde.Target.VALUE, valueSerdeName);
     var fallbackSerde = getSerdesFor(cluster).getFallbackSerde();

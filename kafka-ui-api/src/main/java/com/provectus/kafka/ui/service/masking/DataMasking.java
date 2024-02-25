@@ -24,9 +24,9 @@ public class DataMasking {
 
   @Value
   static class Mask {
-    @Nullable
+
     Pattern topicKeysPattern;
-    @Nullable
+
     Pattern topicValuesPattern;
 
     MaskingPolicy policy;

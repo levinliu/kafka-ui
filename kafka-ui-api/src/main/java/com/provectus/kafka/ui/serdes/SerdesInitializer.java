@@ -274,7 +274,7 @@ public class SerdesInitializer {
     );
   }
 
-  @Nullable
+
   private Pattern nullablePattern(@Nullable String pattern) {
     return pattern == null ? null : Pattern.compile(pattern);
   }

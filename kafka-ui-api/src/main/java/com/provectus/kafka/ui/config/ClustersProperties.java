@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.annotation.Nullable;
+//import javax.annotation.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -182,8 +182,8 @@ public class ClustersProperties {
     }
   }
 
-  private Map<String, Object> flattenClusterProperties(@Nullable String prefix,
-                                                       @Nullable Map<String, Object> propertiesMap) {
+  private Map<String, Object> flattenClusterProperties(String prefix,
+                                                       Map<String, Object> propertiesMap) {
     Map<String, Object> flattened = new HashMap<>();
     if (propertiesMap != null) {
       propertiesMap.forEach((k, v) -> {

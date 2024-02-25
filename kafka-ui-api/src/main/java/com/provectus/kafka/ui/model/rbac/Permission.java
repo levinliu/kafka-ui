@@ -19,12 +19,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
-import javax.annotation.Nullable;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
 @Getter
 @ToString
@@ -37,9 +36,7 @@ public class Permission {
   Resource resource;
   List<String> actions;
 
-  @Nullable
   String value;
-  @Nullable
   transient Pattern compiledValuePattern;
 
   @SuppressWarnings("unused")
@@ -48,7 +45,7 @@ public class Permission {
   }
 
   @SuppressWarnings("unused")
-  public void setValue(@Nullable String value) {
+  public void setValue(String value) {
     this.value = value;
   }
 
@@ -68,7 +65,7 @@ public class Permission {
     if (value != null) {
       this.compiledValuePattern = Pattern.compile(value);
     }
-    if (CollectionUtils.isNotEmpty(actions) && actions.stream().anyMatch("ALL"::equalsIgnoreCase)) {
+    if (CollectionUtils.isEmpty(actions) && actions.stream().anyMatch("ALL"::equalsIgnoreCase)) {
       this.actions = getAllActionValues();
     }
   }

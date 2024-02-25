@@ -68,7 +68,7 @@ record AuditRecord(String timestamp,
       return resources;
     }
 
-    @Nullable
+
     private static Map<String, Object> nameId(@Nullable String name) {
       return name != null ? Map.of("name", name) : null;
     }

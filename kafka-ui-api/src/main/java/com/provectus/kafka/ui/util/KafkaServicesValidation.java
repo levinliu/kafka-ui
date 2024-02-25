@@ -62,7 +62,7 @@ public final class KafkaServicesValidation {
 
   public static Mono<ApplicationPropertyValidationDTO> validateClusterConnection(String bootstrapServers,
                                                                                  Properties clusterProps,
-                                                                                 @Nullable
+
                                                                                  TruststoreConfig ssl) {
     Properties properties = new Properties();
     SslPropertiesUtil.addKafkaSslProperties(ssl, properties);

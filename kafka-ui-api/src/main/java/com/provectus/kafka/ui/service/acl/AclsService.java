@@ -128,8 +128,8 @@ public class AclsService {
                                                List<AclOperation> opsToAllow,
                                                String principal,
                                                String host,
-                                               @Nullable String resourcePrefix,
-                                               @Nullable Collection<String> resourceNames) {
+                                              String resourcePrefix,
+                                              Collection<String> resourceNames) {
     List<AclBinding> bindings = new ArrayList<>();
     if (resourcePrefix != null) {
       for (var op : opsToAllow) {

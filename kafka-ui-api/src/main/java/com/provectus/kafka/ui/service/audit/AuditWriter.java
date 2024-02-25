@@ -19,9 +19,9 @@ import org.slf4j.Logger;
 @Slf4j
 record AuditWriter(String clusterName,
                    boolean logAlterOperationsOnly,
-                   @Nullable String targetTopic,
-                   @Nullable KafkaProducer<byte[], byte[]> producer,
-                   @Nullable Logger consoleLogger) implements Closeable {
+                  String targetTopic,
+                  KafkaProducer<byte[], byte[]> producer,
+                  Logger consoleLogger) implements Closeable {
 
   boolean isTopicWritingEnabled() {
     return producer != null;
@@ -31,7 +31,7 @@ record AuditWriter(String clusterName,
   static void writeAppOperation(Logger consoleLogger,
                                 AccessContext ctx,
                                 AuthenticatedUser user,
-                                @Nullable Throwable th) {
+                               Throwable th) {
     consoleLogger.info(createRecord(ctx, user, th).toJson());
   }
 
@@ -61,7 +61,7 @@ record AuditWriter(String clusterName,
 
   private static AuditRecord createRecord(AccessContext ctx,
                                           AuthenticatedUser user,
-                                          @Nullable Throwable th) {
+                                         Throwable th) {
     return new AuditRecord(
         DateTimeFormatter.ISO_INSTANT.format(Instant.now()),
         user.principal(),

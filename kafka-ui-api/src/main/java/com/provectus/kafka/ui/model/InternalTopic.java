@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 import lombok.Builder;
 import lombok.Data;
 import org.apache.kafka.clients.admin.ConfigEntry;
@@ -45,7 +44,7 @@ public class InternalTopic {
                                    InternalPartitionsOffsets partitionsOffsets,
                                    Metrics metrics,
                                    InternalLogDirStats logDirInfo,
-                                   @Nullable String internalTopicPrefix) {
+                                   String internalTopicPrefix) {
     var topic = InternalTopic.builder();
 
     internalTopicPrefix = internalTopicPrefix == null || internalTopicPrefix.isEmpty()

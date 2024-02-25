@@ -61,7 +61,7 @@ record ConnectorInfo(List<String> inputs,
 
     String connectionUrl = (String) config.get("connection.url");
     List<String> outputs = new ArrayList<>();
-    @Nullable var knownJdbcPath = new JdbcUrlParser().parse(connectionUrl);
+   var knownJdbcPath = new JdbcUrlParser().parse(connectionUrl);
     if (knownJdbcPath instanceof PostgreSqlPath p) {
       targetTables.forEach(t -> outputs.add(p.toBuilder().table(t).build().oddrn()));
     }

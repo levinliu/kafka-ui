@@ -202,7 +202,7 @@ public class KafkaClusterFactory {
     return clusterProperties.getMetrics() != null;
   }
 
-  @Nullable
+
   private MetricsConfig metricsConfigDataToMetricsConfig(ClustersProperties.MetricsConfigData metricsConfigData) {
     if (metricsConfigData == null) {
       return null;

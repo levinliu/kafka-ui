@@ -66,7 +66,7 @@ public class MessageFilters {
     };
   }
 
-  @Nullable
+
   private static Object parseToJsonOrReturnAsIs(JsonSlurper parser, @Nullable String str) {
     if (str == null) {
       return null;

@@ -144,7 +144,7 @@ public class MessagesController extends AbstractController implements MessagesAp
    * The format is [partition]::[offset] for specifying offsets
    * or [partition]::[timestamp in millis] for specifying timestamps.
    */
-  @Nullable
+
   private Map<TopicPartition, Long> parseSeekTo(String topic, SeekTypeDTO seekType, List<String> seekTo) {
     if (seekTo == null || seekTo.isEmpty()) {
       if (seekType == SeekTypeDTO.LATEST || seekType == SeekTypeDTO.BEGINNING) {

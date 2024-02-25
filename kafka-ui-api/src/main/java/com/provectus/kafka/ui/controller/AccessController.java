@@ -75,7 +75,7 @@ public class AccessController implements AuthorizationApi {
         .toList();
   }
 
-  @Nullable
+
   private ActionDTO mapAction(String name) {
     try {
       return ActionDTO.fromValue(name);

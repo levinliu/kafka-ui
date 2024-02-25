@@ -43,7 +43,7 @@ public class InternalClusterMetrics {
   private final int outOfSyncReplicasCount;
 
   // log dir stats
-  @Nullable // will be null if log dir collection disabled
+ // will be null if log dir collection disabled
   private final Map<Integer, InternalBrokerDiskUsage> internalBrokerDiskUsage;
 
   // metrics from metrics collector

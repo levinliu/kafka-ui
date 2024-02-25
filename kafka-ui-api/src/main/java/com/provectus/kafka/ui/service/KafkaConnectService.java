@@ -57,7 +57,7 @@ public class KafkaConnectService {
   }
 
   public Flux<FullConnectorInfoDTO> getAllConnectors(final KafkaCluster cluster,
-                                                     @Nullable final String search) {
+                                                    final String search) {
     return getConnects(cluster)
         .flatMap(connect ->
             getConnectorNamesWithErrorsSuppress(cluster, connect.getName())

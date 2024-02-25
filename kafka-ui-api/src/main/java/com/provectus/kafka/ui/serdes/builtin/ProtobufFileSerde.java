@@ -77,10 +77,10 @@ public class ProtobufFileSerde implements BuiltInSerde {
 
   private Map<Descriptor, Path> descriptorPaths = new HashMap<>();
 
-  @Nullable
+
   private Descriptor defaultMessageDescriptor;
 
-  @Nullable
+
   private Descriptor defaultKeyMessageDescriptor;
 
   @Override
@@ -197,7 +197,7 @@ public class ProtobufFileSerde implements BuiltInSerde {
 
   @VisibleForTesting
   record Configuration(@Nullable Descriptor defaultMessageDescriptor,
-                       @Nullable Descriptor defaultKeyMessageDescriptor,
+                      Descriptor defaultKeyMessageDescriptor,
                        Map<Descriptor, Path> descriptorPaths,
                        Map<String, Descriptor> messageDescriptorMap,
                        Map<String, Descriptor> keyMessageDescriptorMap) {

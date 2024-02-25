@@ -19,7 +19,6 @@ import com.provectus.kafka.ui.util.ApplicationRestarter;
 import com.provectus.kafka.ui.util.DynamicConfigOperations;
 import com.provectus.kafka.ui.util.DynamicConfigOperations.PropertiesStructure;
 import java.util.Map;
-import javax.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.Mapper;
@@ -127,7 +126,7 @@ public class ApplicationConfigController extends AbstractController implements A
   }
 
   private Mono<Map<String, ClusterConfigValidationDTO>> validateClustersConfig(
-      @Nullable ClustersProperties properties) {
+      ClustersProperties properties) {
     if (properties == null || properties.getClusters() == null) {
       return Mono.just(Map.of());
     }

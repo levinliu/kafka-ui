@@ -66,7 +66,7 @@ public class BrokersController extends AbstractController implements BrokersApi 
 
   @Override
   public Mono<ResponseEntity<Flux<BrokersLogdirsDTO>>> getAllBrokersLogdirs(String clusterName,
-                                                                            @Nullable List<Integer> brokers,
+                                                                           List<Integer> brokers,
                                                                             ServerWebExchange exchange) {
 
     List<Integer> brokerIds = brokers == null ? List.of() : brokers;

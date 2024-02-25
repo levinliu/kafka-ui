@@ -16,10 +16,10 @@ public class ProducerRecordCreator {
   private final Serde.Serializer valuesSerializer;
 
   public ProducerRecord<byte[], byte[]> create(String topic,
-                                               @Nullable Integer partition,
-                                               @Nullable String key,
-                                               @Nullable String value,
-                                               @Nullable Map<String, String> headers) {
+                                              Integer partition,
+                                              String key,
+                                              String value,
+                                              Map<String, String> headers) {
     return new ProducerRecord<>(
         topic,
         partition,

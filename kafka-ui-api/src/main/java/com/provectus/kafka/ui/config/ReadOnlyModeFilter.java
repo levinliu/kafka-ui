@@ -7,7 +7,6 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -25,9 +24,8 @@ public class ReadOnlyModeFilter implements WebFilter {
 
   private final ClustersStorage clustersStorage;
 
-  @NotNull
   @Override
-  public Mono<Void> filter(ServerWebExchange exchange, @NotNull WebFilterChain chain) {
+  public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
     var isSafeMethod = exchange.getRequest().getMethod() == HttpMethod.GET;
     if (isSafeMethod) {
       return chain.filter(exchange);

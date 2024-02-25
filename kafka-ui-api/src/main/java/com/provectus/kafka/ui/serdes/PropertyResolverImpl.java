@@ -17,7 +17,7 @@ public class PropertyResolverImpl implements PropertyResolver {
 
   private final Binder binder;
 
-  @Nullable
+
   private final String prefix;
 
   public static PropertyResolverImpl empty() {

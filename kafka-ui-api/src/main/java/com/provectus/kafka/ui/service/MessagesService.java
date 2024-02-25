@@ -199,12 +199,12 @@ public class MessagesService {
 
   public Flux<TopicMessageEventDTO> loadMessages(KafkaCluster cluster, String topic,
                                                  ConsumerPosition consumerPosition,
-                                                 @Nullable String query,
+                                                String query,
                                                  MessageFilterTypeDTO filterQueryType,
-                                                 @Nullable Integer pageSize,
+                                                Integer pageSize,
                                                  SeekDirectionDTO seekDirection,
-                                                 @Nullable String keySerde,
-                                                 @Nullable String valueSerde) {
+                                                String keySerde,
+                                                String valueSerde) {
     return withExistingTopic(cluster, topic)
         .flux()
         .publishOn(Schedulers.boundedElastic())
@@ -221,12 +221,12 @@ public class MessagesService {
   private Flux<TopicMessageEventDTO> loadMessagesImpl(KafkaCluster cluster,
                                                       String topic,
                                                       ConsumerPosition consumerPosition,
-                                                      @Nullable String query,
+                                                     String query,
                                                       MessageFilterTypeDTO filterQueryType,
                                                       int limit,
                                                       SeekDirectionDTO seekDirection,
-                                                      @Nullable String keySerde,
-                                                      @Nullable String valueSerde) {
+                                                     String keySerde,
+                                                     String valueSerde) {
 
     var deserializer = deserializationService.deserializerFor(cluster, topic, keySerde, valueSerde);
     var filter = getMsgFilter(query, filterQueryType);

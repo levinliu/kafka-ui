@@ -69,18 +69,18 @@ public class PartitionDistributionStats {
     map.compute(n, (k, c) -> c == null ? 1 : ++c);
   }
 
-  @Nullable
+
   public BigDecimal partitionsSkew(Node node) {
     return calculateAvgSkew(partitionsCount.get(node), avgPartitionsPerBroker);
   }
 
-  @Nullable
+
   public BigDecimal leadersSkew(Node node) {
     return calculateAvgSkew(partitionLeaders.get(node), avgLeadersCntPerBroker);
   }
 
   // Returns difference (in percents) from average value, null if it can't be calculated
-  @Nullable
+
   private BigDecimal calculateAvgSkew(@Nullable Integer value, double avgValue) {
     if (avgValue == 0 || !skewCanBeCalculated) {
       return null;

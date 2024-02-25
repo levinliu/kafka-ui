@@ -30,10 +30,8 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
@@ -43,6 +41,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.oauth2.client.registration.InMemoryReactiveClientRegistrationRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -54,7 +53,6 @@ public class AccessControlService {
   private static final String ACCESS_DENIED = "Access denied";
   private static final String ACTIONS_ARE_EMPTY = "actions are empty";
 
-  @Nullable
   private final InMemoryReactiveClientRegistrationRepository clientRegistrationRepository;
   private final RoleBasedAccessControlProperties properties;
   private final Environment environment;
@@ -100,7 +98,7 @@ public class AccessControlService {
       return Mono.empty();
     }
 
-    if (CollectionUtils.isNotEmpty(context.getApplicationConfigActions())) {
+    if (!CollectionUtils.isEmpty(context.getApplicationConfigActions())) {
       return getUser()
           .doOnNext(user -> {
             boolean accessGranted = isApplicationConfigAccessible(context, user);
@@ -429,7 +427,7 @@ public class AccessControlService {
     return Collections.unmodifiableList(properties.getRoles());
   }
 
-  private boolean isAccessible(Resource resource, @Nullable String resourceValue,
+  private boolean isAccessible(Resource resource, String resourceValue,
                                AuthenticatedUser user, AccessContext context, Set<String> requiredActions) {
     Set<String> grantedActions = properties.getRoles()
         .stream()
@@ -466,7 +464,7 @@ public class AccessControlService {
     return grantedPermission -> resource == grantedPermission.getResource();
   }
 
-  private Predicate<Permission> filterResourceValue(@Nullable String resourceValue) {
+  private Predicate<Permission> filterResourceValue(String resourceValue) {
 
     if (resourceValue == null) {
       return grantedPermission -> true;

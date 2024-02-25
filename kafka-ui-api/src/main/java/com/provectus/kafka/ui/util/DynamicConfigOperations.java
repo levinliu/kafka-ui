@@ -103,7 +103,7 @@ public class DynamicConfigOperations {
         .build();
   }
 
-  @Nullable
+
   private <T> T getNullableBean(Class<T> clazz) {
     try {
       return ctx.getBean(clazz);

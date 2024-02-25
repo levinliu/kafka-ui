@@ -76,7 +76,7 @@ public class SeekOperations {
   static Map<TopicPartition, Long> getOffsetsForSeek(Consumer<?, ?> consumer,
                                                      OffsetsInfo offsetsInfo,
                                                      SeekTypeDTO seekType,
-                                                     @Nullable Map<TopicPartition, Long> seekTo) {
+                                                    Map<TopicPartition, Long> seekTo) {
     switch (seekType) {
       case LATEST:
         return consumer.endOffsets(offsetsInfo.getNonEmptyPartitions());

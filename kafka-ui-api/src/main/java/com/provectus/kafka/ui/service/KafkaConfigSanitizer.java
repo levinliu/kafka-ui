@@ -67,7 +67,7 @@ class KafkaConfigSanitizer {
         .collect(Collectors.toSet());
   }
 
-  @Nullable
+
   public Object sanitize(String key, @Nullable Object value) {
     for (Pattern pattern : sanitizeKeysPatterns) {
       if (pattern.matcher(key).matches()) {

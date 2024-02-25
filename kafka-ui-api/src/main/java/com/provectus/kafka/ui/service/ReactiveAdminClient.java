@@ -109,7 +109,7 @@ public class ReactiveAdminClient implements Closeable {
     }
 
     static Mono<Set<SupportedFeature>> forVersion(AdminClient ac, String kafkaVersionStr) {
-      @Nullable Float kafkaVersion = KafkaVersion.parse(kafkaVersionStr).orElse(null);
+     Float kafkaVersion = KafkaVersion.parse(kafkaVersionStr).orElse(null);
       return Flux.fromArray(SupportedFeature.values())
           .flatMap(f -> f.predicate.apply(ac, kafkaVersion).map(enabled -> Tuples.of(f, enabled)))
           .filter(Tuple2::getT2)
@@ -120,11 +120,11 @@ public class ReactiveAdminClient implements Closeable {
 
   @Value
   public static class ClusterDescription {
-    @Nullable
+
     Node controller;
     String clusterId;
     Collection<Node> nodes;
-    @Nullable // null, if ACL is disabled
+   // null, if ACL is disabled
     Set<AclOperation> authorizedOperations;
   }
 
@@ -430,7 +430,7 @@ public class ReactiveAdminClient implements Closeable {
 
   public Mono<Void> createTopic(String name,
                                 int numPartitions,
-                                @Nullable Integer replicationFactor,
+                               Integer replicationFactor,
                                 Map<String, String> configs) {
     var newTopic = new NewTopic(
         name,
@@ -484,7 +484,7 @@ public class ReactiveAdminClient implements Closeable {
   // NOTE: partitions with no committed offsets will be skipped
   public Mono<Table<String, TopicPartition, Long>> listConsumerGroupOffsets(List<String> consumerGroups,
                                                                             // all partitions if null passed
-                                                                            @Nullable List<TopicPartition> partitions) {
+                                                                           List<TopicPartition> partitions) {
     Function<Collection<String>, Mono<Map<String, Map<TopicPartition, OffsetAndMetadata>>>> call =
         groups -> toMono(
             client.listConsumerGroupOffsets(

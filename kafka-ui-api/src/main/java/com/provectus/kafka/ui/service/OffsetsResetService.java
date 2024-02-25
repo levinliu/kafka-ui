@@ -44,7 +44,7 @@ public class OffsetsResetService {
 
   private Mono<Map<TopicPartition, Long>> offsets(ReactiveAdminClient client,
                                                   String topic,
-                                                  @Nullable Collection<Integer> partitions,
+                                                 Collection<Integer> partitions,
                                                   OffsetSpec spec) {
     if (partitions == null) {
       return client.listTopicOffsets(topic, spec, true);

@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.jetbrains.annotations.Nullable;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientPropertiesMapper;
@@ -110,7 +109,6 @@ public class OAuthSecurityConfig extends AbstractAuthSecurityConfig {
     return new OidcClientInitiatedServerLogoutSuccessHandler(repository);
   }
 
-  @Nullable
   private ProviderAuthorityExtractor getExtractor(final OAuthProperties.OAuth2Provider provider,
                                                   AccessControlService acs) {
     Optional<ProviderAuthorityExtractor> extractor = acs.getOauthExtractors()

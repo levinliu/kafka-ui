@@ -107,7 +107,7 @@ public class ConsumerGroupService {
       KafkaCluster cluster,
       int pageNum,
       int perPage,
-      @Nullable String search,
+     String search,
       ConsumerGroupOrderingDTO orderBy,
       SortOrderDTO sortOrderDto) {
     return adminClientService.get(cluster).flatMap(ac ->

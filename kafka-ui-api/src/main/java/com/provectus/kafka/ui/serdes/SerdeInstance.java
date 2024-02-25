@@ -20,13 +20,13 @@ public class SerdeInstance implements Closeable {
 
   final Serde serde;
 
-  @Nullable
+
   final Pattern topicKeyPattern;
 
-  @Nullable
+
   final Pattern topicValuePattern;
 
-  @Nullable // will be set for custom serdes
+ // will be set for custom serdes
   final ClassLoader classLoader;
 
   private <T> T wrapWithClassloader(Supplier<T> call) {

@@ -122,7 +122,7 @@ final class JsonSchemaExtractor {
                                     List<DataSetField> sink) {
     boolean isRoot = oddrn == null;
     // schemaLocation can be null for empty object schemas (like if it used in anyOf)
-    @Nullable var schemaLocation = schema.getSchemaLocation();
+   var schemaLocation = schema.getSchemaLocation();
     if (!isRoot) {
       sink.add(createDataSetField(
           schema,
@@ -194,7 +194,7 @@ final class JsonSchemaExtractor {
               nullable
           ));
     }
-    @Nullable var itemsSchema = schema.getAllItemSchema();
+   var itemsSchema = schema.getAllItemSchema();
     if (itemsSchema != null) {
       extract(
           itemsSchema,

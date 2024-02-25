@@ -44,7 +44,7 @@ public class WebClientConfigurator {
   }
 
   public WebClientConfigurator configureSsl(@Nullable ClustersProperties.TruststoreConfig truststoreConfig,
-                                            @Nullable ClustersProperties.KeystoreConfig keystoreConfig) {
+                                           ClustersProperties.KeystoreConfig keystoreConfig) {
     return configureSsl(
         keystoreConfig != null ? keystoreConfig.getKeystoreLocation() : null,
         keystoreConfig != null ? keystoreConfig.getKeystorePassword() : null,
@@ -55,10 +55,10 @@ public class WebClientConfigurator {
 
   @SneakyThrows
   private WebClientConfigurator configureSsl(
-      @Nullable String keystoreLocation,
-      @Nullable String keystorePassword,
-      @Nullable String truststoreLocation,
-      @Nullable String truststorePassword) {
+     String keystoreLocation,
+     String keystorePassword,
+     String truststoreLocation,
+     String truststorePassword) {
     if (truststoreLocation == null && keystoreLocation == null) {
       return this;
     }

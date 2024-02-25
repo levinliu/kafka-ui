@@ -131,12 +131,12 @@ public class SchemaRegistrySerde implements BuiltInSerde {
   }
 
   private static SchemaRegistryClient createSchemaRegistryClient(List<String> urls,
-                                                                 @Nullable String username,
-                                                                 @Nullable String password,
-                                                                 @Nullable String keyStoreLocation,
-                                                                 @Nullable String keyStorePassword,
-                                                                 @Nullable String trustStoreLocation,
-                                                                 @Nullable String trustStorePassword) {
+                                                                String username,
+                                                                String password,
+                                                                String keyStoreLocation,
+                                                                String keyStorePassword,
+                                                                String trustStoreLocation,
+                                                                String trustStorePassword) {
     Map<String, String> configs = new HashMap<>();
     if (username != null && password != null) {
       configs.put(BASIC_AUTH_CREDENTIALS_SOURCE, "USER_INFO");

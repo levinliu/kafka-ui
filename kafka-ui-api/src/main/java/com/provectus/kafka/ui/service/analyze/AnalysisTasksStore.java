@@ -86,7 +86,7 @@ class AnalysisTasksStore {
   }
 
   private TopicAnalysisDTO createAnalysisDto(@Nullable RunningAnalysis runningState,
-                                             @Nullable TopicAnalysisResultDTO completedState) {
+                                            TopicAnalysisResultDTO completedState) {
     return new TopicAnalysisDTO()
         .progress(runningState != null ? runningState.toDto() : null)
         .result(completedState);
